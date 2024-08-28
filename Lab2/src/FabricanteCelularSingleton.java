@@ -1,21 +1,20 @@
 
 public class FabricanteCelularSingleton {
 
-    private static FabricarCelular appleInstance = new AppleFabricante();
-    private static FabricarCelular samsungInstance = new SamsungFabricante();
+    private static FabricarCelular appleInstance;
+    private static FabricarCelular samsungInstance;
 
     public static FabricarCelular getInstance(String tipo) {
-
-        if (tipo.equals("apple")) {
+        
+        if (tipo.equals("apple") && appleInstance == null) {
+            appleInstance = new AppleFabricante();
             return appleInstance;
 
-        } else if (tipo.equals("samsung")) {
-
+        } else if (tipo.equals("samsung") && samsungInstance == null) {
+            samsungInstance = new SamsungFabricante();
             return samsungInstance;
-
-        }else{
-            return null;
         }
+        return null;
         
     }
 
